@@ -94,4 +94,11 @@ def Login():
 
 
             
-            
+def Soma_de_Numeros_Pares():
+    print("Precisa informar o inicio e fim do intervalo")
+    inicio = int(input("inicio: "))
+    fim = int(input("fim: "))
+
+    soma_pares = 0
+    
+    for i in range(inicio, fim):
