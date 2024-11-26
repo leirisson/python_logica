@@ -102,3 +102,4 @@ def Soma_de_Numeros_Pares():
     soma_pares = 0
     
     for i in range(inicio, fim):
+        
