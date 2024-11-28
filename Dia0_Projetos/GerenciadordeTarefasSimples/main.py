@@ -1,47 +1,37 @@
+from modulos.moduloDeTarefas import menu
+from modulos.moduloDeTarefas import criar_tarefa
+from modulos.moduloDeTarefas import editar_tarefa
+from modulos.moduloDeTarefas import excluir_tarefas
+from modulos.moduloDeTarefas import listar_tarefas
 
-def menu():
-        print("1 - criar tarefa")
-        print("2 - editar tarefa")
-        print("3 - excluir tarefa")
-        print("4 - deletar tarefa")
-        print("0 - sair")
+
 
 
 def gerenciadorDeTarefas():
-    tarefas = []
-    tarefa = {}
- 
-    
+    tasks = [{"titulo": "comprar pão"}, {"titulo": "lavar roupas"}]
+       
     
     while True:
         menu()
         op = int(input("escolha uma opção: "))
         try:
             if op == 1:
-                titulo_tarefa = input("qual a tarefa: ")    
-                tarefa['titulo'] = titulo_tarefa 
-                tarefas.append(tarefa)
-                print('tarefa cadastrada com sucesso. ',tarefas)
+                criar_tarefa(tasks)
             elif op == 2:
-                tamanha = len(tarefas)
-                posicao = 0
-                if tamanha > 0:
-                        for tf in tarefas:
-                            print(f"{tf[0]}")
-                            print(f"{posicao}º: {tf[0]['titulo']}")
-                            posicao += 1
-                else:
-                    input("sem tarefas para editar. Aperte enter para continuar.")
+                editar_tarefa(tasks)
+            elif op == 3:
+                excluir_tarefas(tasks)
+            elif op == 4:
+                listar_tarefas(tasks)
             elif op == 0:
-                print("saindo...")
+                print("Saindo... Até logo!")
                 break
+            else:
+                print("Opção invalida tente novamente.")
                 
         except ValueError:
-            print("valor informado nãoa é um numero.")
+            print("valor informado não é um numero.")
 
        
-    
-    
-
 if __name__ == "__main__":
     gerenciadorDeTarefas()
