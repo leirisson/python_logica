@@ -1,0 +1,83 @@
+Usuário:
+
+Pode ser necessário separar informações pessoais e credenciais de login (se aplicável).
+Exemplo: Separar email para outra tabela, se for usada para autenticação.
+
+CREATE TABLE usuario (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    sobrenome VARCHAR(100) NOT NULL,
+    data_nascimento DATE NOT NULL,
+    cpf VARCHAR(11) UNIQUE NOT NULL
+);
+
+CREATE TABLE credenciais_usuario (
+    id_credencial INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    senha_hash VARCHAR(255) NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);
+
+Tabela endereco:
+
+Se várias pessoas podem compartilhar o mesmo endereço (exemplo: famílias ou empresas),
+podemos criar uma tabela intermediária.
+
+CREATE TABLE endereco (
+    id_endereco INT AUTO_INCREMENT PRIMARY KEY,
+    rua VARCHAR(255) NOT NULL,
+    numero VARCHAR(10),
+    complemento VARCHAR(255),
+    cidade VARCHAR(100) NOT NULL,
+    estado VARCHAR(2) NOT NULL,
+    cep VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE usuario_endereco (
+    id_usuario_endereco INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_endereco INT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
+);
+
+
+Tabela emprestimo:
+
+Caso diferentes tipos de empréstimos sejam adicionados, podemos separar os detalhes do empréstimo e o tipo.
+
+CREATE TABLE tipo_emprestimo (
+    id_tipo INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE emprestimo (
+    id_emprestimo INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_tipo INT NOT NULL,
+    valor_emprestimo DECIMAL(10, 2) NOT NULL,
+    data_emprestimo DATE NOT NULL,
+    data_pagamento DATE NOT NULL,
+    juros DECIMAL(5, 2) NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_tipo) REFERENCES tipo_emprestimo(id_tipo)
+);
+
+
+
+Estrutura Final Normalizada
+Tabela usuario: Contém apenas informações pessoais (id, nome, sobrenome, data de nascimento, CPF).
+
+Tabela credenciais_usuario: Relaciona-se com usuario para armazenar email e senha.
+
+Tabela endereco: Define os endereços sem redundâncias.
+
+Tabela usuario_endereco: Conecta usuários a múltiplos endereços.
+
+Tabela tipo_emprestimo: Define os diferentes tipos de empréstimo.
+
+Tabela emprestimo: Conecta o usuário a um tipo de empréstimo.
+
+Tabela historico_emprestimo: Mantém as alterações ou registros históricos relacionados ao empréstimo.
+
