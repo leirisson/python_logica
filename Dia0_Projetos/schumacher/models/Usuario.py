@@ -14,4 +14,4 @@ class Usuario(db.Base):
     id  = Column(Integer, primary_key=True, index=True)
     nome = Column(String, nullable=False)
     sobrenome = Column(String, nullable=False)
-    data_nascimento = Column(Da)
+    data_nascimento = Column()
