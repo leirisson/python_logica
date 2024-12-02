@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "titulo": "comprar p\u00c3\u00a3o",
+    "status": true
+  },
+  {
+    "id": 2,
+    "titulo": "comprar a\u00c3\u00a7ucar",
+    "status": false
+  },
+  {
+    "id": 3,
+    "titulo": "ir ao super mercado",
+    "descricao": "essa tarefa precisa ser feita",
+    "status": false
+  }
+]
