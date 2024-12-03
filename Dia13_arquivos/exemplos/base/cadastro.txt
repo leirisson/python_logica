@@ -1,0 +1,2 @@
+{'nome': 'mouse', 'marca': 'logtech', 'quantidade': 45}
+{'nome': 'teclado', 'marca': 'mock', 'quantidade': 100}
