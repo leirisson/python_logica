@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request,jsonify
 
 app = Flask(__name__)
 
@@ -19,18 +19,34 @@ estoque = [
 @app.route('/', methods=['GET'])
 def index():
     mensagem = {"mensagem":"criando API com Flask"}
-    return mensagem, 200
+    return jsonify(estoque), 200
+
+
+@app.route('/produtos', methods=['GET'])
+def get_produtos():
+    return estoque, 200
 
 @app.route('/produtos', methods=['POST'])
 def set_produto():
-    produto = request.json
+    data = request.json
+
+    produto = {
+        'codigo':data['codigo'],
+        'nome':data['nome'],
+        'preco':data['preco'],
+        'categoria':data['categoria'],
+        'quantidade':data['quantidade']
+        
+    }
+
+    estoque.append(produto)
 
     mensagem = {
         "mensgaem": "produto cadastrado com sucesso.",
         "info": produto
     }
 
-    return mensagem, 2001
+    return jsonify(mensagem), 201
 
 
 if __name__ == "__main__":
