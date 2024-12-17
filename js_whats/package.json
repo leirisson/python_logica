@@ -1,0 +1,31 @@
+{
+  "name": "js_whats",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "build": {
+    "appId": "com.myapp.id",
+    "productName": "zap",
+    "icon": "assets/icon",
+    "files": [
+      "main.js",
+      "index.html",
+      "preload.js",
+      "node_modules"
+    ],
+    "directories": {
+      "output": "release"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2"
+  }
+}

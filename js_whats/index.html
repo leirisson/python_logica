@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Mensagem via WhatsApp</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Enviar Mensagem via WhatsApp</h1>
+        <form id="whatsappForm">
+            <div class="campos">
+            <label for="phone">Número do WhatsApp</label>
+            <input type="tel" id="phone" name="phone" placeholder="Ex.: 92993458795" required>
+            </div>
+            
+           <div class="campos">
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" cols="60" rows="15" placeholder="Digite sua mensagem" required></textarea>
+           </div>
+            
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>
